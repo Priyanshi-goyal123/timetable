@@ -1,0 +1,27 @@
+{
+  "Priyanshi": {
+    "password": "UHJpeWFuc2hpQDEyMw==",
+    "college_start": "13:00",
+    "college_end": "15:00",
+    "study_start": "17:00",
+    "hobby": "cricket",
+    "subjects": [
+      "cn",
+      "os",
+      "ds",
+      "math"
+    ]
+  },
+  "lavish": {
+    "password": "bGF2aXNoMTIz",
+    "college_start": "09:00",
+    "college_end": "14:00",
+    "study_start": "17:00",
+    "hobby": "cricket",
+    "subjects": [
+      "cn",
+      "math",
+      "os"
+    ]
+  }
+}
