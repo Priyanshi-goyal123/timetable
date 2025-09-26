@@ -1,0 +1,100 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Timetable - Student Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>{{ username }}'s Timetable</h2>
+        <p>Select a day to view your timetable:</p>
+        
+        <form method="POST">
+            <select name="day" required>
+                {% for day in days %}
+                    <option value="{{ day }}" {% if day == selected_day %}selected{% endif %}>{{ day }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">View Timetable</button>
+        </form>
+        
+        <h3>{{ selected_day }} Schedule</h3>
+        <ul>
+            {% for item in timetable %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container timetable-container">
+        <h2>Welcome, {{ username }}!</h2>
+
+        <form method="POST" id="prefsForm">
+            <h3>Preferences</h3>
+            <label>College Start Time:
+                <input type="time" name="collegeStart" value="{{ college_start }}">
+            </label>
+            <label>College End Time:
+                <input type="time" name="collegeEnd" value="{{ college_end }}">
+            </label>
+            <label>Study Start Time (after college):
+                <input type="time" name="studyStart" value="{{ study_start }}">
+            </label>
+            <label>Hobby:
+                <input type="text" name="hobby" id="hobbyInput" value="{{ hobby }}">
+            </label>
+
+            <!-- subjects is a text input (comma separated) but we provide Add Subject UI -->
+            <label>Subjects (comma separated):
+                <input type="text" name="subjects" id="subjectsInput" value="{{ ', '.join(subjects) }}">
+            </label>
+
+            <div class="subjects-section">
+                <button type="button" onclick="addSubject()">Add Subject</button>
+                <div id="subjectList"></div>
+            </div>
+
+            <button type="submit">Save & Regenerate Timetable</button>
+        </form>
+
+        <h3>Your Timetable</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    {% for d in days %}
+                    <th>{{ d }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for time_label, activities in timetable %}
+                <tr>
+                    <td>{{ time_label }}</td>
+                    {% for a in activities %}
+                    <td>{{ a }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p style="text-align:center; margin-top:12px;">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
