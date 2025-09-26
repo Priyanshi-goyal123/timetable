@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Hobbies - Student Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ username }}</h2>
+        <p>Enter your hobbies to include in your timetable.</p>
+        <form method="POST">
+            <label for="hobbies">Hobbies (comma separated)</label>
+            <input type="text" name="hobbies" id="hobbies" 
+                   placeholder="e.g., Reading, Drawing, Music" 
+                   value="{{ ', '.join(existing_hobbies) if existing_hobbies else '' }}" required>
+            
+            <button type="submit">Save Hobbies</button>
+        </form>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Register</h2>
+
+        <form method="POST" action="{{ url_for('register_page') }}">
+            <input type="text" name="regUsername" placeholder="Username" required>
+            <input type="password" name="regPassword" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+
+        {% if message %}
+        <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <p class="note">Already have an account? <a href="{{ url_for('login_page') }}">Login</a></p>
+    </div>
+</body>
+</html>
+
+
+
+
