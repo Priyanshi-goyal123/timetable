@@ -1,0 +1,27 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Timings - Student Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>College Timings for {{ username }}</h2>
+        <p>Enter your college start and end times for each day.</p>
+        <form method="POST">
+            {% for day in days %}
+                <label>{{ day }} Start Time</label>
+                <input type="time" name="{{ day }}_start" required
+                       value="{{ existing_times[day]['start'] if existing_times.get(day) else '' }}">
+                
+                <label>{{ day }} End Time</label>
+                <input type="time" name="{{ day }}_end" required
+                       value="{{ existing_times[day]['end'] if existing_times.get(day) else '' }}">
+            {% endfor %}
+            
+            <button type="submit">Save College Timings</button>
+        </form>
+    </div>
+</body>
+</html> -->
